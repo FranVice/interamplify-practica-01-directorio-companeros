@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Práctica 01 — Directorio de Compañeros
 
-## Getting Started
+Aplicación web desarrollada con Next.js que funciona como un directorio interno de compañeros. Permite visualizar un listado de miembros del equipo y acceder al detalle individual de cada uno.
 
-First, run the development server:
+## Stack tecnológico
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
+- Next.js 16 (App Router)
+- React 19
+- TypeScript 5
+- Tailwind CSS 4
+- pnpm
+
+## Instalación y ejecución
+
+Clonar el repositorio:
+
+git clone https://github.com/TU-USUARIO/interamplify-practica-01-directorio-companeros.git
+cd interamplify-practica-01-directorio-companeros
+
+Instalar dependencias:
+
+pnpm install
+
+Ejecutar en modo desarrollo:
+
 pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abrir en el navegador:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Funcionalidades implementadas
 
-## Learn More
+RF-01 · Página de inicio
+- Título de la aplicación.
+- Mensaje de bienvenida.
+- Enlace al listado de compañeros.
 
-To learn more about Next.js, take a look at the following resources:
+RF-02 · Listado de compañeros
+- Renderizado dinámico mediante map().
+- Tarjeta por cada compañero.
+- Enlace a su perfil individual.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+RF-03 · Página de detalle
+- Ruta dinámica /companeros/[id].
+- Visualización de nombre, rol, biografía y tecnologías.
+- Uso de notFound() para mostrar 404 si el id no existe.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+RF-04 · Datos estáticos
+- Datos centralizados en lib/data.ts.
+- Interfaz Coworker tipada con TypeScript.
+- Array con al menos seis miembros.
 
-## Deploy on Vercel
+## Estilos
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Paleta basada exclusivamente en zinc-*.
+- Color de acento blue-600 / dark:blue-400.
+- Soporte para modo oscuro.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Estructura principal
+
+app/
+  page.tsx
+  companeros/
+    page.tsx
+    [id]/
+      page.tsx
+
+lib/
+  data.ts
+
+## Objetivo de la práctica
+
+Aplicar el ciclo completo de desarrollo frontend con Next.js, incluyendo modelado de datos, enrutamiento dinámico,
+renderizado dinámico y organización del proyecto siguiendo buenas prácticas.
