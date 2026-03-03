@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+
 export default function Home() {
   return (
     <main className="min-h-screen flex flex-col items-center justify-center bg-zinc-100 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-100 p-6">

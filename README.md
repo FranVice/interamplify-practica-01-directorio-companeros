@@ -73,3 +73,30 @@ lib/
 
 Aplicar el ciclo completo de desarrollo frontend con Next.js, incluyendo modelado de datos, enrutamiento dinámico,
 renderizado dinámico y organización del proyecto siguiendo buenas prácticas.
+
+## Punto extra
+
+ Branch puntoExtra;
+
+ ## MemberCard.tsx
+
+- Implementar el componente `MemberCard.tsx` y utilizarlo en el listado.
+
+Se a creado carpeta components y añadido el archivo MemberCard, a la vez modificado page.tsx para utilizar,   
+con esto las tarjeta se renderizan de desde MemberCard. Opteniendo código más limpio,no repites diseño
+si cambias el estilo en MemberCard, se actualiza en toda la app.
+- Añadir una búsqueda/filtro por nombre en la página `/companeros` (solo en el cliente).
+- Generar rutas estáticas con `generateStaticParams` en la página de detalle.
+- Añadir metadatos dinámicos con `generateMetadata` en la página de detalle.
+
+## generateStaticParams
+
+- Generar rutas estáticas con `generateStaticParams` en la página de detalle.
+
+Se implementa la generación de rutas estáticas mediante generateStaticParams en la página de detalle (/companeros/[id]), permitiendo preconstruir dinámicamente las páginas individuales de cada compañero en tiempo de build.
+
+## generateMetadata
+
+- Añadir metadatos dinámicos con `generateMetadata` en la página de detalle.
+
+hemos añadido metadatos dinámicos, ahora el <head> del HTML cambia según el compañero.

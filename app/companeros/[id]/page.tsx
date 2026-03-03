@@ -1,14 +1,34 @@
-import { notFound } from "next/navigation";
 import Link from "next/link";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { coworkers } from "../../../lib/data";
 
 interface PageProps {
     params: Promise<{ id: string }>;
     }
 
-    export default async function Page({ params }: PageProps) {
-    const { id } = await params;
+    export async function generateStaticParams() {
+    return coworkers.map((c) => ({ id: c.id }));
+    }
 
+    export async function generateMetadata({
+    params,
+    }: PageProps): Promise<Metadata> {
+    const { id } = await params;
+    const coworker = coworkers.find((c) => c.id === id);
+
+    if (!coworker) {
+        return { title: "Compañero no encontrado" };
+    }
+
+    return {
+        title: `${coworker.nombre} · Directorio de Compañeros`,
+        description: `${coworker.rol} — ${coworker.bio}`,
+    };
+}
+
+export default async function Page({ params }: PageProps) {
+    const { id } = await params;
     const coworker = coworkers.find((c) => c.id === id);
 
     if (!coworker) {
@@ -24,9 +44,7 @@ interface PageProps {
 
             <p className="text-lg mb-2 font-semibold">{coworker.rol}</p>
 
-            <p className="mb-6 text-zinc-600 dark:text-zinc-300">
-            {coworker.bio}
-            </p>
+            <p className="mb-6 text-zinc-600 dark:text-zinc-300">{coworker.bio}</p>
 
             <div className="flex flex-wrap gap-2 mb-6">
             {coworker.tecnologias.map((tec) => (

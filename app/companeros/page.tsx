@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { coworkers } from "../../lib/data";
+import MemberCard from "../../components/MemberCard";
 
 export default function CompanerosPage() {
     return (
@@ -22,22 +23,7 @@ export default function CompanerosPage() {
 
             <ul className="grid gap-4 sm:grid-cols-2">
             {coworkers.map((c) => (
-                <li
-                key={c.id}
-                className="rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 p-4"
-                >
-                <p className="text-lg font-semibold">{c.nombre}</p>
-                <p className="text-sm text-zinc-600 dark:text-zinc-300 mb-3">
-                    {c.rol}
-                </p>
-
-                <Link
-                    href={`/companeros/${c.id}`}
-                    className="text-blue-600 dark:text-blue-400 underline hover:opacity-80"
-                >
-                    Ver perfil →
-                </Link>
-                </li>
+                <MemberCard key={c.id} coworker={c} />
             ))}
             </ul>
         </div>
