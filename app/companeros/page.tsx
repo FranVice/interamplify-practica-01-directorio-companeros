@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { coworkers } from "../../lib/data";
-import MemberCard from "../../components/MemberCard";
+import CompanerosClient from "../../components/CompanerosCliente";
 
 export default function CompanerosPage() {
     return (
@@ -21,12 +21,9 @@ export default function CompanerosPage() {
             ← Volver al inicio
             </Link>
 
-            <ul className="grid gap-4 sm:grid-cols-2">
-            {coworkers.map((c) => (
-                <MemberCard key={c.id} coworker={c} />
-            ))}
-            </ul>
+            {                                                }
+            <CompanerosClient coworkers={coworkers} />
         </div>
         </main>
     );
-}
+    }
