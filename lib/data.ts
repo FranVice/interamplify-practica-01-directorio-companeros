@@ -5,7 +5,7 @@ export interface Coworker {
     bio: string;
     tecnologias: string[];
 }
-
+// Creamos una interfaces en TypeScript y despues un constante que sigue  de tipo cowoker osea una array con la estructura de la interface
 export const coworkers: Coworker[] = [
     {
         id: "ana-garcia",

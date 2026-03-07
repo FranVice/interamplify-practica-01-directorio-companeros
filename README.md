@@ -100,3 +100,15 @@ Se implementa la generación de rutas estáticas mediante generateStaticParams e
 - Añadir metadatos dinámicos con `generateMetadata` en la página de detalle.
 
 hemos añadido metadatos dinámicos, ahora el <head> del HTML cambia según el compañero.
+
+## Logo
+
+- Añadir logo de la empresa en la página de inicio y en la página de detalle.
+
+Se ha añadido el logo de la empresa en la página de inicio y en la página de detalle.
+
+## Estilos
+
+- Mejorar estilos de la aplicación.
+
+Se han mejorado los estilos de la aplicación.
