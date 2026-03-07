@@ -101,14 +101,14 @@ Se implementa la generación de rutas estáticas mediante generateStaticParams e
 
 hemos añadido metadatos dinámicos, ahora el <head> del HTML cambia según el compañero.
 
-## Logo
+## Estilos y Accesibilidad
 
-- Añadir logo de la empresa en la página de inicio y en la página de detalle.
+Se ha realizado una mejora integral de la interfaz de usuario:
+- **Tema Oscuro Premium**: Paleta basada en `zinc-950` con acentos en `blue-500`.
+- **Accesibilidad (WCAG)**: Contraste de texto mejorado y reducción de animaciones agresivas para una mejor experiencia de usuario.
+- **Navegación**: Enfoque de estados claros para navegación por teclado.
+- **Interacción**: Efectos de elevación suaves en las tarjetas de compañeros.
 
-Se ha añadido el logo de la empresa en la página de inicio y en la página de detalle.
+---
+*Nota: Se ha procedido a eliminar el logo de la empresa debido a problemas de transparencia en la imagen original, priorizando la limpieza visual del diseño oscuro.*
 
-## Estilos
-
-- Mejorar estilos de la aplicación.
-
-Se han mejorado los estilos de la aplicación.
