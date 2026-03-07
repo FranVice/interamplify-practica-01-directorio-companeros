@@ -9,8 +9,8 @@ interface MemberCardProps {
 // Cada tarjeta incluye un Link que permite navegar a la página de detalle del compañero.
 export default function MemberCard({ coworker }: MemberCardProps) {
   return (
-    <li className="group relative bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 rounded-2xl p-6 transition-all duration-500 hover:bg-zinc-800/80 hover:border-blue-500/50 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] group-hover/list:scale-[0.90] group-hover/list:opacity-40 hover:!scale-[1.10] hover:!opacity-100 hover:-translate-y-2 z-0 hover:z-20">
-      <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-blue-600/0 via-blue-500/0 to-indigo-500/0 group-hover:from-blue-600/50 group-hover:via-blue-500/50 group-hover:to-indigo-500/50 transition-all duration-500 rounded-t-2xl opacity-0 group-hover:opacity-100" />
+    <li className="group relative bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 rounded-2xl p-6 transition-all duration-300 hover:bg-zinc-800/80 hover:border-blue-500/50 hover:shadow-[0_8px_30px_rgba(59,130,246,0.15)] hover:scale-[1.02] hover:-translate-y-1 z-0 focus-within:z-20 hover:z-20">
+      <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-blue-600/0 via-blue-500/0 to-indigo-500/0 group-hover:from-blue-600/50 group-hover:via-blue-500/50 group-hover:to-indigo-500/50 transition-all duration-300 rounded-t-2xl opacity-0 group-hover:opacity-100" />
       
       <div className="flex flex-col h-full relative z-10 pointer-events-none">
         <h3 className="text-xl font-bold text-zinc-100 mb-1 group-hover:text-blue-400 transition-colors">
