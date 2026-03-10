@@ -29,45 +29,46 @@ Abrir en el navegador:
 
 http://localhost:3000
 
-## Funcionalidades implementadas
+## Funcionalidades implementadas (Práctica 01 + Actualizaciones)
 
-RF-01 · Página de inicio
-- Título de la aplicación.
-- Mensaje de bienvenida.
-- Enlace al listado de compañeros.
+### RF-01 · Landing Page Premium
+- Titular impactante: **"Interamplify Team"**.
+- Diseño orientado a SEO y Marketing Digital con estética profesional.
+- Fondo negro Zinc 950 con cuadrícula lila vibrante y alta visibilidad.
+- Call-to-Action funcional al directorio de compañeros.
 
-RF-02 · Listado de compañeros
-- Renderizado dinámico mediante map().
-- Tarjeta por cada compañero.
-- Enlace a su perfil individual.
+### RF-02 · Sección About Us (/companeros)
+- Encabezado rediseñado con estética corporativa de Interamplify.
+- **MemberCard.tsx**: Incluye ahora **Badges de Tecnologías** y tipado estricto con `Coworker`.
+- Diseño en rejilla responsiva (Móvil: 1, Tablet: 2, Desktop: 3).
 
-RF-03 · Página de detalle
-- Ruta dinámica /companeros/[id].
-- Visualización de nombre, rol, biografía y tecnologías.
-- Uso de notFound() para mostrar 404 si el id no existe.
+### RF-03 · Página de Detalle e Infraestructura
+- Rutas dinámicas asíncronas optimizadas.
+- Proyecto reestructurado bajo la carpeta **`src/`** siguiendo el patrón industrial solicitado.
+- Tipado estricto en toda la aplicación (sin `any`).
 
-RF-04 · Datos estáticos
-- Datos centralizados en lib/data.ts.
-- Interfaz Coworker tipada con TypeScript.
-- Array con al menos seis miembros.
+## Estilos y Acentos
+- Paleta: `zinc-*` para escalas de grises.
+- Acentos: `blue-600` / `dark:blue-400`.
+- Eslogan: *"Expertise that Scales"* integrado en el footer.
 
-## Estilos
+## Estructura del Proyecto (Patrón src/)
 
-- Paleta basada exclusivamente en zinc-*.
-- Color de acento blue-600 / dark:blue-400.
-- Soporte para modo oscuro.
-
-## Estructura principal
-
-app/
-  page.tsx
-  companeros/
-    page.tsx
-    [id]/
-      page.tsx
-
-lib/
-  data.ts
+```text
+src/
+  app/
+    layout.tsx
+    page.tsx (Landing Page RF-01)
+    companeros/
+      page.tsx (About Us RF-02)
+      [id]/
+        page.tsx (Detalle RF-03)
+  components/
+    MemberCard.tsx (Componente obligatorio)
+    CompanerosCliente.tsx (Lógica de filtrado)
+  lib/
+    data.ts (Datos tipados Coworker)
+```
 
 ## Objetivo de la práctica
 

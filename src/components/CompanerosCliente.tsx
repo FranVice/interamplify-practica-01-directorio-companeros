@@ -46,34 +46,37 @@ export default function CompanerosClient({ coworkers }: Props) {
 //grid convierte la lista en un sistema de cuadricula,grap-4 espacio y sm.... que en patallas se muestren 2 columnas
 //placeHolder muestra la pista del el nombre
   return (
-    <section className="space-y-6">
-      <div className="relative max-w-xl mx-auto mb-12">
-        <label className="block relative">
+    <section className="space-y-12">
+      {/* Buscador: Estética mejorada con bordes Zinc y foco Blue-500 */}
+      <div className="relative max-w-xl mx-auto">
+        <label className="block relative group">
           <span className="sr-only">Buscar por nombre</span>
-          <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-            <svg className="h-5 w-5 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-zinc-400 group-focus-within:text-blue-400 transition-colors">
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </div>
           <input
             value={busqueda}
             onChange={(e) => setBusqueda(e.target.value)}
-            placeholder="Buscar compañero (Ej: Ana, Marcos...)"
-            className="w-full pl-11 pr-4 py-4 bg-zinc-900 border border-zinc-800 rounded-2xl text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all shadow-lg"
+            placeholder="Encontrar un compañero..."
+            className="w-full pl-14 pr-6 py-5 bg-zinc-900/50 border border-zinc-800 rounded-3xl text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all backdrop-blur-md shadow-2xl"
           />
         </label>
       </div>
 
-      <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {/* Rejilla Responsiva: Requisito RF-02 (móvil: 1, tablet: 2, desktop: 3) */}
+      <ul className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {filtrados.map((c) => (
           <MemberCard key={c.id} coworker={c} />
         ))}
       </ul>
 
+      {/* Estado vacío: Texto de alta visibilidad */}
       {filtrados.length === 0 && (
-        <div className="text-center py-12">
-          <p className="text-lg text-zinc-400 font-medium">
-            No se encontraron compañeros con ese nombre.
+        <div className="text-center py-20 bg-zinc-900/20 rounded-3xl border border-dashed border-zinc-800">
+          <p className="text-xl text-zinc-400 font-light italic">
+            No se han encontrado resultados para su búsqueda.
           </p>
         </div>
       )}
