@@ -52,13 +52,12 @@ export default function TechFilterClient({ coworkers, techName }: Props) {
       {filtrados.length > 0 ? (
         <ul className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {filtrados.map((coworker, index) => (
-            <li 
-              key={coworker.id} 
+            <MemberCard
+              key={coworker.id}
+              coworker={coworker}
               className="animate-fade-in-up opacity-0"
               style={{ animationDelay: `${index * 150}ms` }}
-            >
-              <MemberCard coworker={coworker} />
-            </li>
+            />
           ))}
         </ul>
       ) : (

@@ -5,14 +5,15 @@ import { coworkers, type Coworker } from "../../../lib/data";
 import TechFilterClient from "../../../components/TechFilterClient";
 
 interface Props {
-  params: {
+  params: Promise<{
     tech: string;
-  };
+  }>;
 }
 
-// 1. Añadimos metadatos dinámicos
-export function generateMetadata({ params }: Props): Metadata {
-  const techName = decodeURIComponent(params.tech);
+// 1. Metadatos dinámicos - async porque params es una Promise en Next.js 15+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { tech } = await params;
+  const techName = decodeURIComponent(tech);
   return {
     title: `${techName} | Especialistas en Interamplify`,
     description: `Descubre a los expertos en ${techName} del equipo de Interamplify.`,
@@ -30,15 +31,15 @@ export function generateStaticParams() {
   });
 
   return Array.from(allTechs).map((tech) => ({
-    tech: encodeURIComponent(tech), // Guardamos de forma segura las URL
+    tech: tech,
   }));
 }
 
-export default function TecnologiaDetallePage({ params }: Props) {
-  // 3. Decodificar nombre de la tecnología 
-  const techName = decodeURIComponent(params.tech);
+// 3. Componente de página - async porque params es una Promise en Next.js 15+
+export default async function TecnologiaDetallePage({ params }: Props) {
+  const { tech } = await params;
+  const techName = decodeURIComponent(tech);
 
-  // 4. Filtrar listado completo (para enviar a cliente)
   const filteredCoworkers = coworkers.filter((coworker: Coworker) =>
     coworker.tecnologias.includes(techName)
   );
@@ -73,7 +74,6 @@ export default function TecnologiaDetallePage({ params }: Props) {
           </p>
         </div>
 
-        {/* 5. Componente Cliente para Filtro Reactivo + Animación Entrada */}
         <TechFilterClient coworkers={filteredCoworkers} techName={techName} />
       </div>
     </main>

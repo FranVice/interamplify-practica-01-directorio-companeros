@@ -1,17 +1,20 @@
+import React from "react";
 import Link from "next/link";
 import type { Coworker } from "../lib/data";
 
 interface MemberCardProps {
   coworker: Coworker;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
 // Recibe un coworker tipado mediante props y renderiza una tarjeta con su información.
 // Cada tarjeta incluye un Link que permite navegar a la página de detalle del compañero.
 // MemberCard.tsx: Componente para mostrar la información básica de un compañero.
 // Recibe un coworker tipado mediante la interfaz Coworker definida en data.ts.
-export default function MemberCard({ coworker }: MemberCardProps) {
+export default function MemberCard({ coworker, className = "", style }: MemberCardProps) {
   return (
-    <li className="group relative bg-zinc-900/40 backdrop-blur-sm border border-zinc-800 rounded-3xl p-8 transition-all duration-500 hover:bg-zinc-900/60 hover:border-blue-500/50 hover:-translate-y-2">
+    <li className={`group relative bg-zinc-900/40 backdrop-blur-sm border border-zinc-800 rounded-3xl p-8 transition-all duration-500 hover:bg-zinc-900/60 hover:border-blue-500/50 hover:-translate-y-2 ${className}`} style={style}>
       {/* Efecto de borde superior sutil al pasar el ratón */}
       <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-blue-600/0 via-blue-400/40 to-indigo-500/0 group-hover:opacity-100 opacity-0 transition-opacity duration-500 rounded-t-3xl" />
       
