@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { type Metadata } from "next";
 import { coworkers, type Coworker } from "../../../lib/data";
-import MemberCard from "../../../components/MemberCard";
+import TechFilterClient from "../../../components/TechFilterClient";
 
 interface Props {
   params: {
@@ -9,27 +10,48 @@ interface Props {
   };
 }
 
+// 1. Añadimos metadatos dinámicos
+export function generateMetadata({ params }: Props): Metadata {
+  const techName = decodeURIComponent(params.tech);
+  return {
+    title: `${techName} | Especialistas en Interamplify`,
+    description: `Descubre a los expertos en ${techName} del equipo de Interamplify.`,
+  };
+}
+
+// 2. Generamos rutas estáticas (SSG) en tiempo de construcción
+export function generateStaticParams() {
+  const allTechs = new Set<string>();
+  
+  coworkers.forEach((coworker) => {
+    coworker.tecnologias.forEach((tech) => {
+      allTechs.add(tech);
+    });
+  });
+
+  return Array.from(allTechs).map((tech) => ({
+    tech: encodeURIComponent(tech), // Guardamos de forma segura las URL
+  }));
+}
+
 export default function TecnologiaDetallePage({ params }: Props) {
-  // 1. Decodificar el parámetro de la URL (por si tiene espacios, ej: "Next.js")
+  // 3. Decodificar nombre de la tecnología 
   const techName = decodeURIComponent(params.tech);
 
-  // 2. Filtrar compañeros que tengan esta tecnología en su array
+  // 4. Filtrar listado completo (para enviar a cliente)
   const filteredCoworkers = coworkers.filter((coworker: Coworker) =>
     coworker.tecnologias.includes(techName)
   );
 
-  // 3. Ejecutar 404 de Next.js si la tecnología no se usa por nadie
   if (filteredCoworkers.length === 0) {
     notFound();
   }
 
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-100 font-sans p-8 md:p-16 relative overflow-hidden">
-      {/* Fondo sutil (matching con home/compañeros) */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#8b5cf6_1px,transparent_1px),linear-gradient(to_bottom,#8b5cf6_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_0%,#000_70%,transparent_100%)] opacity-20 pointer-events-none z-0" />
 
       <div className="relative z-10 max-w-5xl mx-auto">
-        {/* Navegación y Encabezado */}
         <div className="mb-12">
           <Link
             href="/tecnologias"
@@ -51,12 +73,8 @@ export default function TecnologiaDetallePage({ params }: Props) {
           </p>
         </div>
 
-        {/* Listado de compañeros filtrados */}
-        <ul className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredCoworkers.map((coworker: Coworker) => (
-            <MemberCard key={coworker.id} coworker={coworker} />
-          ))}
-        </ul>
+        {/* 5. Componente Cliente para Filtro Reactivo + Animación Entrada */}
+        <TechFilterClient coworkers={filteredCoworkers} techName={techName} />
       </div>
     </main>
   );

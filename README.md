@@ -89,11 +89,13 @@ src/
 Aplicar el ciclo completo de desarrollo frontend con Next.js, incluyendo modelado de datos, enrutamiento dinámico,
 renderizado dinámico y organización del proyecto siguiendo buenas prácticas.
 
-## Punto extra
+## Puntos Extra (Práctica 02)
+- **Generación SSG (`generateStaticParams`)**: Construcción estática en build-time de las rutas `tecnologias/[tech]` para un máximo rendimiento de Vercel/Node.
+- **SEO y Metadatos Dinámicos (`generateMetadata`)**: Títulos de página y descripciones únicas basadas en la tecnología mostrada.
+- **Buscador Reactivo (Cliente)**: Implementación de la lógica separada del servidor hacia un nuevo `TechFilterClient.tsx` que aplica filtrado por término in-vivo conservando el SEO.
+- **Animaciones CSS (Tailwind)**: Agregadas animaciones secuenciales estilo `Fade-In Up` calculadas con offsets matemáticos para una entrada vistosa en la lista de especialistas.
 
- Branch puntoExtra;
-
- ## MemberCard.tsx
+## Archivos antiguos y notas de Práctica 01
 
 - Implementar el componente `MemberCard.tsx` y utilizarlo en el listado.
 
