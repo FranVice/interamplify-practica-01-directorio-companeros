@@ -47,6 +47,11 @@ http://localhost:3000
 - Proyecto reestructurado bajo la carpeta **`src/`** siguiendo el patrón industrial solicitado.
 - Tipado estricto en toda la aplicación (sin `any`).
 
+### RF-04 · Listado Dinámico de Tecnologías (`/tecnologias`)
+- **Página Principal de Tecnologías:** Extrae iterativamente (mediante `reduce`) de `data.ts` todas las tecnologías únicas de los usuarios y las cuenta dinámicamente. Muestra Cards interactivas para cada tecnología.
+- **Ruta Dinámica Detallada (`/tecnologias/[tech]`):** Capta el parámetro de URL, decodifica el string, y filtra a todos los compañeros que incluyen dicha tecnología usando el componente `MemberCard.tsx`.
+- **Datos de Ejemplo:** Se añadieron 10 perfiles especializados en SEO con tecnologías del sector (Screaming Frog, Ahrefs, Semrush, etc).
+
 ### RF-03 · Ordenación del listado (`/companeros`)
 - Implementación de un estado en el cliente (`useState`) para la ordenación alfabética.
 - Botón visual interactivo para alternar entre orden Ascendente (A → Z) y Descendente (Z → A).
