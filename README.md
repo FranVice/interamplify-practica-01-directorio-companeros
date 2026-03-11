@@ -52,6 +52,10 @@ http://localhost:3000
 - **Ruta Dinámica Detallada (`/tecnologias/[tech]`):** Capta el parámetro de URL, decodifica el string, y filtra a todos los compañeros que incluyen dicha tecnología usando el componente `MemberCard.tsx`.
 - **Datos de Ejemplo:** Se añadieron 10 perfiles especializados en SEO con tecnologías del sector (Screaming Frog, Ahrefs, Semrush, etc).
 
+### RF-05 · Detalle de Tecnología y Control de Errores Navigacionales
+- Integración nativa de la función `notFound()` de la librería `next/navigation`.
+- **Error 404 Personalizado:** Creación del componente `/tecnologias/[tech]/not-found.tsx` que intercepta dinámicamente cualquier URL con tecnologías inválidas o usuarios inexistentes, mostrando un mensaje estético con enrutamiento de vuelta integrado, en reemplazo al error 500 predeterminado.
+
 ### RF-03 · Ordenación del listado (`/companeros`)
 - Implementación de un estado en el cliente (`useState`) para la ordenación alfabética.
 - Botón visual interactivo para alternar entre orden Ascendente (A → Z) y Descendente (Z → A).

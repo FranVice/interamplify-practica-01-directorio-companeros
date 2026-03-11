@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { coworkers, type Coworker } from "../../../lib/data";
 import MemberCard from "../../../components/MemberCard";
 
@@ -16,6 +17,11 @@ export default function TecnologiaDetallePage({ params }: Props) {
   const filteredCoworkers = coworkers.filter((coworker: Coworker) =>
     coworker.tecnologias.includes(techName)
   );
+
+  // 3. Ejecutar 404 de Next.js si la tecnología no se usa por nadie
+  if (filteredCoworkers.length === 0) {
+    notFound();
+  }
 
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-100 font-sans p-8 md:p-16 relative overflow-hidden">
@@ -45,32 +51,12 @@ export default function TecnologiaDetallePage({ params }: Props) {
           </p>
         </div>
 
-        {/* Listado de compañeros filtrados o Estado vacío */}
-        {filteredCoworkers.length > 0 ? (
-          <ul className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredCoworkers.map((coworker: Coworker) => (
-              <MemberCard key={coworker.id} coworker={coworker} />
-            ))}
-          </ul>
-        ) : (
-          <div className="text-center py-20 bg-zinc-900/50 backdrop-blur-sm rounded-3xl border border-dashed border-zinc-800">
-            <div className="w-16 h-16 bg-zinc-800 rounded-2xl flex items-center justify-center mx-auto mb-4 text-zinc-500">
-              <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-bold text-white mb-2">Sin resultados</h3>
-            <p className="text-zinc-400 font-light max-w-md mx-auto">
-              Actualmente no tenemos registrado a ningún compañero que utilice <span className="text-white font-medium">{techName}</span> en su stack principal.
-            </p>
-            <Link
-              href="/tecnologias"
-              className="inline-block mt-6 px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-xl transition-colors"
-            >
-              Explorar otras tecnologías
-            </Link>
-          </div>
-        )}
+        {/* Listado de compañeros filtrados */}
+        <ul className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          {filteredCoworkers.map((coworker: Coworker) => (
+            <MemberCard key={coworker.id} coworker={coworker} />
+          ))}
+        </ul>
       </div>
     </main>
   );
