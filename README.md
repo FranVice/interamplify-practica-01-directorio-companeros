@@ -47,6 +47,11 @@ http://localhost:3000
 - Proyecto reestructurado bajo la carpeta **`src/`** siguiendo el patrón industrial solicitado.
 - Tipado estricto en toda la aplicación (sin `any`).
 
+### RF-03 · Ordenación del listado (`/companeros`)
+- Implementación de un estado en el cliente (`useState`) para la ordenación alfabética.
+- Botón visual interactivo para alternar entre orden Ascendente (A → Z) y Descendente (Z → A).
+- Lógica de ordenación combinada con el filtrado mediante `useMemo` y `.localeCompare("es")` para respetar acentos y caracteres del español.
+
 ## Estilos y Acentos
 - Paleta: `zinc-*` para escalas de grises.
 - Acentos: `blue-600` / `dark:blue-400`.
