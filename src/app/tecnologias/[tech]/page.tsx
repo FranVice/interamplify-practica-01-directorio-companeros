@@ -8,6 +8,7 @@ import { notFound } from "next/navigation";
 import { type Metadata } from "next";
 import { coworkers, type Coworker } from "../../../lib/data";
 import TechFilterClient from "../../../components/TechFilterClient";
+import Footer from "../../../components/Footer";
 
 interface Props {
   params: Promise<{
@@ -98,6 +99,10 @@ export default async function TecnologiaDetallePage({ params }: Props) {
         {/* 4. Componente de cliente para filtrado local (opcional) y display del listado */}
         <TechFilterClient coworkers={filteredCoworkers} techName={techName} />
       </div>
+
+      {/* 5. Footer global con navegación */}
+      <Footer />
     </main>
+
   );
 }

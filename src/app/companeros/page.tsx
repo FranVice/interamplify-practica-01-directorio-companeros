@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { coworkers } from "../../lib/data";
 import CompanerosClient from "../../components/CompanerosCliente";
+import Footer from "../../components/Footer";
 
 export default function CompanerosPage() {
   return (
@@ -44,43 +45,9 @@ export default function CompanerosPage() {
         </div>
       </div>
 
-      {/* ── Footer fijo (fixed) ──
-           Siempre visible en la parte inferior de la pantalla.
-           No incluye enlace a /companeros porque ya estamos en esa página. */}
-      <footer className="fixed bottom-0 left-0 right-0 z-20 w-full border-t border-zinc-800 bg-zinc-950/90 backdrop-blur-md">
-        <div className="max-w-6xl mx-auto px-8 py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-zinc-100 text-sm">
-
-          {/* Lado izquierdo: copyright y eslogan */}
-          <div className="flex flex-col items-center md:items-start gap-1">
-            <p>© 2024 Interamplify. Todos los derechos reservados.</p>
-            <p className="text-zinc-500 italic font-medium">Expertise that Scales.</p>
-          </div>
-
-          {/* Lado derecho: enlaces de navegación (todos excepto /companeros) */}
-          <div className="flex items-center gap-8">
-
-            {/* Enlace a Stack Tecnológico con icono de código */}
-            <Link
-              href="/tecnologias"
-              className="text-white hover:text-blue-400 transition-colors flex items-center gap-2 group font-semibold"
-            >
-              Stack Tecnológico
-              <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-              </svg>
-            </Link>
-
-            {/* Enlace a Inicio */}
-            <Link
-              href="/"
-              className="text-zinc-300 hover:text-white transition-colors font-medium"
-            >
-              Inicio
-            </Link>
-
-          </div>
-        </div>
-      </footer>
+      {/* ── Footer Fijo ──
+           Componente estandarizado con navegación lateral inteligente. */}
+      <Footer exclude="directorio" />
 
     </main>
   );

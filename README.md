@@ -48,7 +48,8 @@ Aplicación web profesional desarrollada con **Next.js 15**, **TypeScript** y **
 ### 📋 Gestión de Datos y Navegación
 - **SSG (Static Site Generation)**: Uso de `generateStaticParams` para pre-renderizar todas las páginas de especialistas y tecnologías, asegurando velocidad instantánea.
 - **Metadatos Dinámicos**: Títulos y descripciones SEO que cambian según el contenido de la página.
-- **Footer Fijo (Fixed)**: Pie de página siempre visible con navegación global inteligente (oculta el enlace a la sección actual).
+- **Footer Global Inteligente**: Nuevo componente `Footer.tsx` que unifica la navegación y el pie de página en todo el sitio, con lógica de exclusión de rutas.
+
 
 ## 📄 Documentación Extendida
 Para un análisis técnico profundo sobre la arquitectura, los componentes y la lógica del proyecto, consulta el archivo:
