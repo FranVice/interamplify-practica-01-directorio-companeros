@@ -1,11 +1,20 @@
+/**
+ * Definición de la interfaz Coworker.
+ * Representa la estructura de datos para cada miembro del equipo.
+ */
 export interface Coworker {
-    id: string;
-    nombre: string;
-    rol: string;
-    bio: string;
-    tecnologias: string[];
+    id: string;          // Identificador único (slug para la URL)
+    nombre: string;      // Nombre completo del compañero
+    rol: string;         // Puesto o cargo actual
+    bio: string;         // Breve biografía profesional
+    tecnologias: string[]; // Lista de tecnologías o herramientas en las que es experto
 }
-// Creamos una interfaces en TypeScript y despues un constante que sigue  de tipo cowoker osea una array con la estructura de la interface
+
+/**
+ * Dataset centralizado del equipo.
+ * Este array actúa como nuestra "Base de Datos" simplificada para la práctica.
+ * Se exporta para ser consumido por las distintas páginas y componentes de filtrado.
+ */
 export const coworkers: Coworker[] = [
     {
         id: "ana-garcia",
@@ -119,4 +128,4 @@ export const coworkers: Coworker[] = [
         bio: "Automatización de extracciones, machine learning aplicado al SEO y big data.",
         tecnologias: ["Python", "BigQuery", "SQL", "Looker Studio"],
     },
-];
+];

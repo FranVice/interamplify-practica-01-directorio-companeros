@@ -1,3 +1,8 @@
+/**
+ * Detalles de Tecnología: Página dinámica que muestra especialistas en una herramienta específica.
+ * Utiliza parámetros dinámicos [tech] para filtrar el listado de compañeros.
+ */
+
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { type Metadata } from "next";
@@ -6,53 +11,67 @@ import TechFilterClient from "../../../components/TechFilterClient";
 
 interface Props {
   params: Promise<{
-    tech: string;
+    tech: string; // Nombre de la tecnología (ej: "Next.js")
   }>;
 }
 
-// 1. Metadatos dinámicos - async porque params es una Promise en Next.js 15+
+/**
+ * 1. Metadatos dinámicos: Genera el título de la pestaña del navegador según la tecnología.
+ * En Next.js 15+, 'params' se recibe como una Promesa.
+ */
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { tech } = await params;
-  const techName = decodeURIComponent(tech);
+  const techName = decodeURIComponent(tech); // Decodificar caracteres especiales de la URL
   return {
-    title: `${techName} | Especialistas en Interamplify`,
-    description: `Descubre a los expertos en ${techName} del equipo de Interamplify.`,
+    title: `Expertos en ${techName} | Interamplify Team`,
+    description: `Conoce a los especialistas de Interamplify expertos en ${techName}.`,
   };
 }
 
-// 2. Generamos rutas estáticas (SSG) en tiempo de construcción
+/**
+ * 2. Generación de Rutas Estáticas (SSG):
+ * Pre-renderiza todas las páginas de tecnología posibles en tiempo de construcción.
+ */
 export function generateStaticParams() {
   const allTechs = new Set<string>();
   
+  // Recopilamos todas las etiquetas de tecnología únicas del dataset
   coworkers.forEach((coworker) => {
     coworker.tecnologias.forEach((tech) => {
       allTechs.add(tech);
     });
   });
 
+  // Retornamos un array de objetos con el parámetro 'tech' para Next.js
   return Array.from(allTechs).map((tech) => ({
     tech: tech,
   }));
 }
 
-// 3. Componente de página - async porque params es una Promise en Next.js 15+
+/**
+ * 3. Componente de Página (Server Component): 
+ */
 export default async function TecnologiaDetallePage({ params }: Props) {
   const { tech } = await params;
   const techName = decodeURIComponent(tech);
 
+  // Filtramos el dataset global para encontrar compañeros que dominen esta tecnología
   const filteredCoworkers = coworkers.filter((coworker: Coworker) =>
     coworker.tecnologias.includes(techName)
   );
 
+  // Si no hay resultados (ej: URL manual inexistente), lanzamos un 404
   if (filteredCoworkers.length === 0) {
     notFound();
   }
 
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-100 font-sans p-8 md:p-16 relative overflow-hidden">
+      {/* Fondo decorativo consistente con el sistema de diseño */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#8b5cf6_1px,transparent_1px),linear-gradient(to_bottom,#8b5cf6_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_0%,#000_70%,transparent_100%)] opacity-20 pointer-events-none z-0" />
 
       <div className="relative z-10 max-w-5xl mx-auto">
+        {/* Navegación y Encabezado */}
         <div className="mb-12">
           <Link
             href="/tecnologias"
@@ -67,6 +86,8 @@ export default async function TecnologiaDetallePage({ params }: Props) {
           <h1 className="text-4xl md:text-5xl font-black tracking-tight text-white mb-4">
             Especialistas en <span className="text-blue-500">{techName}</span>
           </h1>
+          
+          {/* Contador de resultados */}
           <p className="text-zinc-400 text-lg max-w-2xl">
             {filteredCoworkers.length === 1 
               ? `Hemos encontrado 1 compañero que trabaja con ${techName}.` 
@@ -74,6 +95,7 @@ export default async function TecnologiaDetallePage({ params }: Props) {
           </p>
         </div>
 
+        {/* 4. Componente de cliente para filtrado local (opcional) y display del listado */}
         <TechFilterClient coworkers={filteredCoworkers} techName={techName} />
       </div>
     </main>

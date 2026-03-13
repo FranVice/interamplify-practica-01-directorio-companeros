@@ -1,131 +1,72 @@
-# Práctica 01 — Directorio de Compañeros
+# Práctica 01 — Directorio de Compañeros: Interamplify Team
 
-Aplicación web desarrollada con Next.js que funciona como un directorio interno de compañeros. Permite visualizar un listado de miembros del equipo y acceder al detalle individual de cada uno.
+Aplicación web profesional desarrollada con **Next.js 15**, **TypeScript** y **Tailwind CSS**. Funciona como un directorio interno premium para el equipo de Interamplify, permitiendo la visualización, búsqueda y filtrado de especialistas en SEO y Tecnología.
 
-## Stack tecnológico
+## 🚀 Stack Tecnológico
 
-- Next.js 16 (App Router)
-- React 19
-- TypeScript 5
-- Tailwind CSS 4
-- pnpm
+- **Framework**: Next.js 15 (App Router)
+- **Lenguaje**: TypeScript 5 (Tipado estricto)
+- **Estilos**: Tailwind CSS 4 (Diseño responsivo y moderno)
+- **Gestor de paquetes**: npm / pnpm
+- **Fuentes**: Geist Sans & Mono
 
-## Instalación y ejecución
+## 🛠️ Instalación y Ejecución
 
-Clonar el repositorio:
+1. **Clonar el repositorio**:
+   ```bash
+   git clone https://github.com/FranVice/interamplify-practica-01-directorio-companeros.git
+   cd interamplify-practica-01-directorio-companeros
+   ```
 
-git clone https://github.com/TU-USUARIO/interamplify-practica-01-directorio-companeros.git
-cd interamplify-practica-01-directorio-companeros
+2. **Instalar dependencias**:
+   ```bash
+   npm install
+   # o bien
+   pnpm install
+   ```
 
-Instalar dependencias:
+3. **Ejecutar en desarrollo**:
+   ```bash
+   npm run dev
+   ```
 
-pnpm install
+4. **Abrir en el navegador**:
+   Accede a [http://localhost:3000](http://localhost:3000)
 
-Ejecutar en modo desarrollo:
+## ✨ Funcionalidades Destacadas
 
-pnpm dev
+### 💻 Interfaz Premium y Responsive
+- **Landing Page**: Diseño de alto impacto con cuadrícula lila vibrante y animaciones de entrada.
+- **Modo Oscuro Nativo**: Basado en `zinc-950` para una estética tecnológica y limpia.
+- **Arquitectura Industrial**: Proyecto organizado bajo el patrón `/src` para mayor claridad y escalabilidad.
 
-Abrir en el navegador:
+### 🔍 Búsqueda y Filtrado Inteligente
+- **Buscador de Tecnologías**: Nuevo componente con **autocompletado reactivo** que permite encontrar herramientas y navegar directamente a sus especialistas.
+- **Filtro de Compañeros**: Búsqueda por nombre en tiempo real con normalización de caracteres (ignora tildes y mayúsculas).
+- **Ordenación Alfabética**: Botón interactivo para alternar entre orden A-Z y Z-A.
 
-http://localhost:3000
+### 📋 Gestión de Datos y Navegación
+- **SSG (Static Site Generation)**: Uso de `generateStaticParams` para pre-renderizar todas las páginas de especialistas y tecnologías, asegurando velocidad instantánea.
+- **Metadatos Dinámicos**: Títulos y descripciones SEO que cambian según el contenido de la página.
+- **Footer Fijo (Fixed)**: Pie de página siempre visible con navegación global inteligente (oculta el enlace a la sección actual).
 
-## Funcionalidades implementadas (Práctica 01 + Actualizaciones)
+## 📄 Documentación Extendida
+Para un análisis técnico profundo sobre la arquitectura, los componentes y la lógica del proyecto, consulta el archivo:
+👉 **[DOCUMENTACION_PROYECTO.md](./DOCUMENTACION_PROYECTO.md)**
 
-### RF-01 · Landing Page Premium
-- Titular impactante: **"Interamplify Team"**.
-- Diseño orientado a SEO y Marketing Digital con estética profesional.
-- Fondo negro Zinc 950 con cuadrícula lila vibrante y alta visibilidad.
-- Call-to-Action funcional al directorio de compañeros.
+---
 
-### RF-02 · Sección About Us (/companeros)
-- Encabezado rediseñado con estética corporativa de Interamplify.
-- **MemberCard.tsx**: Incluye ahora **Badges de Tecnologías** y tipado estricto con `Coworker`.
-- Diseño en rejilla responsiva (Móvil: 1, Tablet: 2, Desktop: 3).
-
-### RF-03 · Página de Detalle e Infraestructura
-- Rutas dinámicas asíncronas optimizadas.
-- Proyecto reestructurado bajo la carpeta **`src/`** siguiendo el patrón industrial solicitado.
-- Tipado estricto en toda la aplicación (sin `any`).
-
-### RF-04 · Listado Dinámico de Tecnologías (`/tecnologias`)
-- **Página Principal de Tecnologías:** Extrae iterativamente (mediante `reduce`) de `data.ts` todas las tecnologías únicas de los usuarios y las cuenta dinámicamente. Muestra Cards interactivas para cada tecnología.
-- **Ruta Dinámica Detallada (`/tecnologias/[tech]`):** Capta el parámetro de URL, decodifica el string, y filtra a todos los compañeros que incluyen dicha tecnología usando el componente `MemberCard.tsx`.
-- **Datos de Ejemplo:** Se añadieron 10 perfiles especializados en SEO con tecnologías del sector (Screaming Frog, Ahrefs, Semrush, etc).
-
-### RF-05 · Detalle de Tecnología y Control de Errores Navigacionales
-- Integración nativa de la función `notFound()` de la librería `next/navigation`.
-- **Error 404 Personalizado:** Creación del componente `/tecnologias/[tech]/not-found.tsx` que intercepta dinámicamente cualquier URL con tecnologías inválidas o usuarios inexistentes, mostrando un mensaje estético con enrutamiento de vuelta integrado, en reemplazo al error 500 predeterminado.
-
-### RF-03 · Ordenación del listado (`/companeros`)
-- Implementación de un estado en el cliente (`useState`) para la ordenación alfabética.
-- Botón visual interactivo para alternar entre orden Ascendente (A → Z) y Descendente (Z → A).
-- Lógica de ordenación combinada con el filtrado mediante `useMemo` y `.localeCompare("es")` para respetar acentos y caracteres del español.
-
-## Estilos y Acentos
-- Paleta: `zinc-*` para escalas de grises.
-- Acentos: `blue-600` / `dark:blue-400`.
-- Eslogan: *"Expertise that Scales"* integrado en el footer.
-
-## Estructura del Proyecto (Patrón src/)
+## 🏗️ Estructura del Proyecto
 
 ```text
 src/
-  app/
-    layout.tsx
-    page.tsx (Landing Page RF-01)
-    companeros/
-      page.tsx (About Us RF-02)
-      [id]/
-        page.tsx (Detalle RF-03)
-  components/
-    MemberCard.tsx (Componente obligatorio)
-    CompanerosCliente.tsx (Lógica de filtrado)
-  lib/
-    data.ts (Datos tipados Coworker)
+  app/                  # Rutas (Landing, Directorio, Tecnologías)
+  components/           # Componentes modulares (MemberCard, SearchBars)
+  lib/                  # Fuente de datos centralizada (data.ts)
 ```
 
-## Objetivo de la práctica
-
-Aplicar el ciclo completo de desarrollo frontend con Next.js, incluyendo modelado de datos, enrutamiento dinámico,
-renderizado dinámico y organización del proyecto siguiendo buenas prácticas.
-
-## Puntos Extra (Práctica 02)
-- **Generación SSG (`generateStaticParams`)**: Construcción estática en build-time de las rutas `tecnologias/[tech]` para un máximo rendimiento de Vercel/Node.
-- **SEO y Metadatos Dinámicos (`generateMetadata`)**: Títulos de página y descripciones únicas basadas en la tecnología mostrada.
-- **Buscador Reactivo (Cliente)**: Implementación de la lógica separada del servidor hacia un nuevo `TechFilterClient.tsx` que aplica filtrado por término in-vivo conservando el SEO.
-- **Animaciones CSS (Tailwind)**: Agregadas animaciones secuenciales estilo `Fade-In Up` calculadas con offsets matemáticos para una entrada vistosa en la lista de especialistas.
-
-## Archivos antiguos y notas de Práctica 01
-
-- Implementar el componente `MemberCard.tsx` y utilizarlo en el listado.
-
-Se a creado carpeta components y añadido el archivo MemberCard, a la vez modificado page.tsx para utilizar,   
-con esto las tarjeta se renderizan de desde MemberCard. Opteniendo código más limpio,no repites diseño
-si cambias el estilo en MemberCard, se actualiza en toda la app.
-- Añadir una búsqueda/filtro por nombre en la página `/companeros` (solo en el cliente).
-- Generar rutas estáticas con `generateStaticParams` en la página de detalle.
-- Añadir metadatos dinámicos con `generateMetadata` en la página de detalle.
-
-## generateStaticParams
-
-- Generar rutas estáticas con `generateStaticParams` en la página de detalle.
-
-Se implementa la generación de rutas estáticas mediante generateStaticParams en la página de detalle (/companeros/[id]), permitiendo preconstruir dinámicamente las páginas individuales de cada compañero en tiempo de build.
-
-## generateMetadata
-
-- Añadir metadatos dinámicos con `generateMetadata` en la página de detalle.
-
-hemos añadido metadatos dinámicos, ahora el <head> del HTML cambia según el compañero.
-
-## Estilos y Accesibilidad
-
-Se ha realizado una mejora integral de la interfaz de usuario:
-- **Tema Oscuro Premium**: Paleta basada en `zinc-950` con acentos en `blue-500`.
-- **Accesibilidad (WCAG)**: Contraste de texto mejorado y reducción de animaciones agresivas para una mejor experiencia de usuario.
-- **Navegación**: Enfoque de estados claros para navegación por teclado.
-- **Interacción**: Efectos de elevación suaves en las tarjetas de compañeros.
+## 🎯 Objetivo
+Esta práctica demuestra el dominio de **Next.js 15**, desde la gestión de rutas dinámicas y componentes de cliente hasta la optimización SEO y la creación de interfaces de usuario premium altamente interactivas.
 
 ---
-*Nota: Se ha procedido a eliminar el logo de la empresa debido a problemas de transparencia en la imagen original, priorizando la limpieza visual del diseño oscuro.*
-
+*Developed by Fran García for Interamplify — "Expertise that Scales"*
