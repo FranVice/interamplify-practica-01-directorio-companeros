@@ -1,108 +1,107 @@
-/**
- * Detalles de Tecnología: Página dinámica que muestra especialistas en una herramienta específica.
- * Utiliza parámetros dinámicos [tech] para filtrar el listado de compañeros.
- */
-
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { type Metadata } from "next";
+import FiltroTecnologiaCliente from "../../../components/FiltroTecnologiaCliente";
 import { coworkers, type Coworker } from "../../../lib/data";
-import TechFilterClient from "../../../components/TechFilterClient";
-import Footer from "../../../components/Footer";
 
-interface Props {
+interface PropiedadesPagina {
   params: Promise<{
-    tech: string; // Nombre de la tecnología (ej: "Next.js")
+    tech: string;
   }>;
 }
 
-/**
- * 1. Metadatos dinámicos: Genera el título de la pestaña del navegador según la tecnología.
- * En Next.js 15+, 'params' se recibe como una Promesa.
- */
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+// Punto extra: genera el <title> y description dinámicos según la tecnología.
+export async function generateMetadata({
+  params,
+}: PropiedadesPagina): Promise<Metadata> {
   const { tech } = await params;
-  const techName = decodeURIComponent(tech); // Decodificar caracteres especiales de la URL
+  const nombreTecnologia = decodeURIComponent(tech);
+
   return {
-    title: `Expertos en ${techName} | Interamplify Team`,
-    description: `Conoce a los especialistas de Interamplify expertos en ${techName}.`,
+    title: `Expertos en ${nombreTecnologia} | Interamplify Team`,
+    description: `Conoce a los especialistas de Interamplify expertos en ${nombreTecnologia}.`,
   };
 }
 
-/**
- * 2. Generación de Rutas Estáticas (SSG):
- * Pre-renderiza todas las páginas de tecnología posibles en tiempo de construcción.
- */
+// Punto extra: prerenderiza en build una página estática por cada tecnología del dataset.
 export function generateStaticParams() {
-  const allTechs = new Set<string>();
-  
-  // Recopilamos todas las etiquetas de tecnología únicas del dataset
-  coworkers.forEach((coworker) => {
-    coworker.tecnologias.forEach((tech) => {
-      allTechs.add(tech);
+  const todasLasTecnologias = new Set<string>();
+  coworkers.forEach((companero) => {
+    companero.tecnologias.forEach((tecnologia) => {
+      todasLasTecnologias.add(tecnologia);
     });
   });
-
-  // Retornamos un array de objetos con el parámetro 'tech' para Next.js
-  return Array.from(allTechs).map((tech) => ({
-    tech: tech,
+  return Array.from(todasLasTecnologias).map((tecnologia) => ({
+    tech: tecnologia,
   }));
 }
 
-/**
- * 3. Componente de Página (Server Component): 
- */
-export default async function TecnologiaDetallePage({ params }: Props) {
+export default async function PaginaDetalleTecnologia({
+  params,
+}: PropiedadesPagina) {
   const { tech } = await params;
-  const techName = decodeURIComponent(tech);
+  const nombreTecnologia = decodeURIComponent(tech);
 
-  // Filtramos el dataset global para encontrar compañeros que dominen esta tecnología
-  const filteredCoworkers = coworkers.filter((coworker: Coworker) =>
-    coworker.tecnologias.includes(techName)
+  // RF-05: filtra los compañeros que tienen esta tecnología en su stack.
+  const companerosFiltrados = coworkers.filter((companero: Coworker) =>
+    companero.tecnologias.includes(nombreTecnologia)
   );
 
-  // Si no hay resultados (ej: URL manual inexistente), lanzamos un 404
-  if (filteredCoworkers.length === 0) {
+  // RF-05: si ningún compañero usa esta tecnología, la URL no es válida → 404.
+  if (companerosFiltrados.length === 0) {
     notFound();
   }
 
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-100 font-sans p-8 md:p-16 relative overflow-hidden">
-      {/* Fondo decorativo consistente con el sistema de diseño */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#8b5cf6_1px,transparent_1px),linear-gradient(to_bottom,#8b5cf6_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_0%,#000_70%,transparent_100%)] opacity-20 pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#8b5cf6_1px,transparent_1px),linear-gradient(to_bottom,#8b5cf6_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-14 pointer-events-none z-0" />
 
-      <div className="relative z-10 max-w-5xl mx-auto">
-        {/* Navegación y Encabezado */}
+      <div className="absolute left-1/2 top-24 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-blue-600/10 blur-3xl pointer-events-none z-0" />
+
+      {/* flex-col + min-h garantizan que el footer quede siempre al fondo aunque haya poco contenido */}
+      <div className="relative z-10 max-w-5xl mx-auto flex flex-col min-h-[calc(100vh-8rem)]">
+        <div className="flex-1">{/* flex-1 empuja el footer hacia abajo ocupando el espacio sobrante */}
         <div className="mb-12">
           <Link
             href="/tecnologias"
-            className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors mb-6 font-medium"
+            className="mb-6 inline-flex items-center gap-2 border border-zinc-800 bg-zinc-900/50 hover:bg-zinc-800 text-zinc-300 hover:text-white px-5 py-2 rounded-full text-sm font-medium transition-all backdrop-blur-sm group"
           >
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
             Volver a Tecnologías
           </Link>
 
           <h1 className="text-4xl md:text-5xl font-black tracking-tight text-white mb-4">
-            Especialistas en <span className="text-blue-500">{techName}</span>
+            Especialistas en <span className="text-blue-500">{nombreTecnologia}</span>
           </h1>
-          
-          {/* Contador de resultados */}
+
           <p className="text-zinc-400 text-lg max-w-2xl">
-            {filteredCoworkers.length === 1 
-              ? `Hemos encontrado 1 compañero que trabaja con ${techName}.` 
-              : `Hemos encontrado ${filteredCoworkers.length} compañeros que trabajan con ${techName}.`}
+            {companerosFiltrados.length === 1
+              ? `Hemos encontrado 1 compañero que trabaja con ${nombreTecnologia}.`
+              : `Hemos encontrado ${companerosFiltrados.length} compañeros que trabajan con ${nombreTecnologia}.`}
           </p>
         </div>
 
-        {/* 4. Componente de cliente para filtrado local (opcional) y display del listado */}
-        <TechFilterClient coworkers={filteredCoworkers} techName={techName} />
+        {/*
+          RF-05: lista los compañeros especializados con MemberCard (mismo componente que en /companeros).
+          Punto extra: FiltroTecnologiaCliente añade búsqueda por nombre en el cliente.
+        */}
+        <FiltroTecnologiaCliente
+          companeros={companerosFiltrados}
+          nombreTecnologia={nombreTecnologia}
+        />
+        </div>
+
+        {/* Cada página gestiona su propio pie de página, sin footer global (requisito técnico). */}
+        <footer className="mt-12 border-t border-zinc-800/80 pt-10 pb-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-zinc-400">
+          <p>© 2024 Interamplify Directory. <span className="text-zinc-300">Expertise that Scales.</span></p>
+          <div className="flex items-center gap-6">
+            <Link href="/tecnologias" className="hover:text-blue-400 transition-colors">Tecnologías</Link>
+            <Link href="/companeros" className="hover:text-blue-400 transition-colors">Compañeros</Link>
+          </div>
+        </footer>
       </div>
-
-      {/* 5. Footer global con navegación */}
-      <Footer />
     </main>
-
   );
 }

@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-export default function TechNotFound() {
+export default function CompaneroNotFound() {
   return (
-    <main className="min-h-screen bg-zinc-950 text-zinc-100 font-sans p-8 md:p-16 relative overflow-hidden">
+    <main className="min-h-screen bg-zinc-950 text-zinc-100 p-8 md:p-16 relative overflow-hidden">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#8b5cf6_1px,transparent_1px),linear-gradient(to_bottom,#8b5cf6_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_0%,#000_70%,transparent_100%)] opacity-20 pointer-events-none z-0" />
 
       <div className="relative z-10 max-w-5xl mx-auto flex flex-col min-h-[calc(100vh-8rem)]">
@@ -18,22 +18,22 @@ export default function TechNotFound() {
               404
             </h1>
             <h2 className="text-2xl font-bold text-white mb-4">
-              Tecnología no encontrada
+              Compañero no encontrado
             </h2>
 
             <p className="text-zinc-400 font-light mb-8 text-lg">
-              No hemos encontrado ningún compañero en la base de datos que utilice esta herramienta en su stack actual.
-              Es posible que la URL contenga algún error tipográfico.
+              No hemos encontrado un perfil con ese identificador en el directorio actual.
+              Revisa la URL o vuelve al listado general para seguir navegando.
             </p>
 
             <Link
-              href="/tecnologias"
+              href="/companeros"
               className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-medium rounded-xl transition-all hover:scale-105 hover:shadow-[0_0_30px_-10px_rgba(37,99,235,0.6)] group"
             >
               <svg className="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
-              Volver a Tecnologías
+              Volver a Compañeros
             </Link>
           </div>
         </div>
@@ -42,8 +42,8 @@ export default function TechNotFound() {
         <footer className="mt-12 border-t border-zinc-800/80 pt-10 pb-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-zinc-400">
           <p>© 2024 Interamplify Directory. <span className="text-zinc-300">Expertise that Scales.</span></p>
           <div className="flex items-center gap-6">
-            <Link href="/tecnologias" className="hover:text-blue-400 transition-colors">Tecnologías</Link>
             <Link href="/companeros" className="hover:text-blue-400 transition-colors">Compañeros</Link>
+            <Link href="/tecnologias" className="hover:text-blue-400 transition-colors">Tecnologías</Link>
           </div>
         </footer>
       </div>
