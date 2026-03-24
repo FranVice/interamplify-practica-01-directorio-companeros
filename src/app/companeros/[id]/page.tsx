@@ -82,14 +82,16 @@ export default async function PaginaCompanero({
 
           <div>
             <h2 className="text-sm font-semibold text-zinc-500 uppercase tracking-wider mb-4">Tecnologías</h2>
+            {/* Cada badge enlaza a /tecnologias/[tech] para ver todos los especialistas de esa tecnología. */}
             <div className="flex flex-wrap gap-2">
               {companero.tecnologias.map((tecnologia) => (
-                <span
+                <Link
                   key={tecnologia}
-                  className="px-4 py-2 text-sm font-medium rounded-xl bg-blue-900/20 text-blue-300 border border-blue-800/30"
+                  href={`/tecnologias/${encodeURIComponent(tecnologia)}`}
+                  className="px-4 py-2 text-sm font-medium rounded-xl bg-blue-900/20 text-blue-300 border border-blue-800/30 hover:bg-blue-900/40 hover:border-blue-600/50 hover:text-blue-200 transition-colors"
                 >
                   {tecnologia}
-                </span>
+                </Link>
               ))}
             </div>
           </div>

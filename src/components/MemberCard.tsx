@@ -35,14 +35,16 @@ export default function MemberCard({
           {companero.bio}
         </p>
 
+        {/* Cada badge enlaza a /tecnologias/[tech] con z-30 para estar por encima del link superpuesto de la tarjeta. */}
         <div className="flex flex-wrap gap-2 mb-8">
           {companero.tecnologias.map((tecnologia) => (
-            <span
+            <Link
               key={tecnologia}
-              className="px-3 py-1 bg-zinc-800/50 border border-zinc-700/50 text-zinc-300 text-xs font-medium rounded-lg"
+              href={`/tecnologias/${encodeURIComponent(tecnologia)}`}
+              className="relative z-30 px-3 py-1 bg-zinc-800/50 border border-zinc-700/50 text-zinc-300 text-xs font-medium rounded-lg hover:bg-blue-900/30 hover:border-blue-700/50 hover:text-blue-300 transition-colors"
             >
               {tecnologia}
-            </span>
+            </Link>
           ))}
         </div>
 
