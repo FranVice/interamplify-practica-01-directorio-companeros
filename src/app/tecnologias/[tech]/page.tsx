@@ -94,8 +94,8 @@ export default async function PaginaDetalleTecnologia({
         </div>
 
         {/* Cada página gestiona su propio pie de página, sin footer global (requisito técnico). */}
-        <footer className="mt-12 border-t border-zinc-800/80 pt-10 pb-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-zinc-400">
-          <p>© 2024 Interamplify Directory. <span className="text-zinc-300">Expertise that Scales.</span></p>
+        <footer className="mt-12 border-t border-zinc-700 pt-10 pb-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-zinc-400">
+          <p>© 2026 Interamplify Directory. <span className="text-zinc-300">Expertise that Scales.</span></p>
           <div className="flex items-center gap-6">
             <Link href="/tecnologias" className="hover:text-blue-400 transition-colors">Tecnologías</Link>
             <Link href="/companeros" className="hover:text-blue-400 transition-colors">Compañeros</Link>

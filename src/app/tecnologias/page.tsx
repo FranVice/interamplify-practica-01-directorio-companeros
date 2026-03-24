@@ -48,12 +48,12 @@ export default function TecnologiasPage() {
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.05] text-white mb-6">
             Stack <span className="text-blue-600">Tecnológico</span>
           </h1>
-          <p className="text-blue-50 text-lg md:text-xl max-w-xl font-light leading-relaxed">
+          <p className="text-zinc-300 text-lg md:text-xl max-w-xl font-light leading-relaxed">
             Explora las herramientas y frameworks que utilizamos para construir soluciones digitales de alto impacto.
           </p>
         </div>
 
-        <div className="mb-20">
+        <div className="mb-10">
           {/* Buscador con autocompletado para acceso rápido al detalle de cada tecnología (punto extra). */}
           <BuscadorTecnologias />
         </div>
@@ -74,7 +74,7 @@ export default function TecnologiasPage() {
                 <span className="text-zinc-300 font-medium group-hover:text-blue-400 transition-colors">
                   {tech}
                 </span>
-                <span className="text-xs text-zinc-500 group-hover:text-blue-500/70 transition-colors">
+                <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-900/30 text-blue-400 border border-blue-800/30 group-hover:bg-blue-600/30 transition-colors">
                   {count} {count === 1 ? "compañero" : "compañeros"}
                 </span>
               </Link>
@@ -83,8 +83,8 @@ export default function TecnologiasPage() {
         </div>
 
         {/* Cada página gestiona su propio pie de página, sin footer global (requisito técnico). */}
-        <footer className="border-t border-zinc-800/80 pt-10 pb-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-zinc-400">
-          <p>© 2024 Interamplify Directory. <span className="text-zinc-300">Expertise that Scales.</span></p>
+        <footer className="border-t border-zinc-700 pt-10 pb-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-zinc-400">
+          <p>© 2026 Interamplify Directory. <span className="text-zinc-300">Expertise that Scales.</span></p>
           <div className="flex items-center gap-6">
             <Link href="/" className="hover:text-blue-400 transition-colors">Inicio</Link>
             <Link href="/companeros" className="hover:text-blue-400 transition-colors">Compañeros</Link>

@@ -25,7 +25,7 @@ export default function Home() {
           </h1>
 
           {/* Subtítulo descriptivo del hero */}
-          <p className="text-blue-50 text-lg md:text-xl max-w-2xl font-light leading-relaxed animate-fade-in-up [animation-delay:200ms]">
+          <p className="text-zinc-300 text-lg md:text-xl max-w-2xl font-light leading-relaxed animate-fade-in-up [animation-delay:200ms]">
             Descubre a los profesionales certificados en SEO, Desarrollo y Estrategia detrás de los proyectos digitales más ambiciosos.
           </p>
 
@@ -55,13 +55,13 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-fade-in-up [animation-delay:600ms]">
           <div className="p-8 bg-zinc-900/50 border border-zinc-800 rounded-3xl backdrop-blur-sm group hover:border-blue-500/50 transition-colors">
-            <div className="w-12 h-12 bg-blue-600/10 rounded-2xl flex items-center justify-center mb-6 text-blue-500 group-hover:scale-110 transition-transform">
+            <div className="w-12 h-12 bg-blue-600/10 rounded-2xl flex items-center justify-center mb-6 text-zinc-3000 group-hover:scale-110 transition-transform">
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </div>
             <h3 className="text-xl font-bold mb-3">Filtrado Avanzado</h3>
-            <p className="text-amber-50 text-sm leading-relaxed">
+            <p className="text-zinc-300 text-sm leading-relaxed">
               Encuentra al especialista ideal filtrando por nombre o por su stack tecnológico específico.
             </p>
           </div>
@@ -73,7 +73,7 @@ export default function Home() {
               </svg>
             </div>
             <h3 className="text-xl font-bold mb-3">Perfiles Verificados</h3>
-            <p className="text-amber-50 text-sm leading-relaxed">
+            <p className="text-zinc-300 text-sm leading-relaxed">
               Profesionales con experiencia real en herramientas líderes del sector como Ahrefs o Next.js.
             </p>
           </div>
@@ -85,19 +85,19 @@ export default function Home() {
               </svg>
             </div>
             <h3 className="text-xl font-bold mb-3">Alta Performance</h3>
-            <p className="text-amber-50 text-sm leading-relaxed">
+            <p className="text-zinc-300 text-sm leading-relaxed">
               Navegación instantánea gracias a la tecnología de Next.js App Router y renderizado optimizado.
             </p>
           </div>
         </div>
 
         {/* Cada página gestiona su propio pie de página, sin footer global (requisito técnico). */}
-        <footer className="mt-32 pt-12 border-t border-zinc-900 pb-12 flex flex-col md:flex-row justify-between items-center gap-6 text-zinc-400 text-sm">
-          <p>© 2024 Interamplify Directory. <span className="text-zinc-300">Expertise that Scales.</span></p>
+        <footer className="mt-32 pt-12 border-t border-zinc-700 pb-12 flex flex-col md:flex-row justify-between items-center gap-6 text-zinc-400 text-sm">
+          <p>© 2026 Interamplify Directory. <span className="text-zinc-300">Expertise that Scales.</span></p>
           <div className="flex gap-8">
             <Link href="/companeros" className="hover:text-blue-400 transition-colors">Directorio</Link>
             <Link href="/tecnologias" className="hover:text-blue-400 transition-colors">Tecnologías</Link>
-            <a href="#" className="hover:text-blue-500 transition-colors">Privacidad</a>
+            <Link href="/companeros" className="hover:text-blue-400 transition-colors">Equipo</Link>
           </div>
         </footer>
       </div>

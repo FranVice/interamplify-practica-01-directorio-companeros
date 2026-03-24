@@ -34,7 +34,7 @@ export default function CompanerosPage() {
             Expertos <span className="text-blue-600 dark:text-blue-400">Interamplify</span>
           </h1>
 
-          <p className="text-blue-50 text-lg md:text-xl max-w-2xl font-light leading-relaxed">
+          <p className="text-zinc-300 text-lg md:text-xl max-w-2xl font-light leading-relaxed">
             Conoce al equipo que amplifica el éxito digital. Especialistas en SEO, tecnología y crecimiento internacional.
           </p>
         </div>
@@ -48,8 +48,8 @@ export default function CompanerosPage() {
         </div>
 
         {/* Cada página gestiona su propio pie de página, sin footer global (requisito técnico). */}
-        <footer className="border-t border-zinc-800/80 pt-10 pb-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-zinc-400">
-          <p>© 2024 Interamplify Directory. <span className="text-zinc-300">Expertise that Scales.</span></p>
+        <footer className="border-t border-zinc-700 pt-10 pb-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-zinc-400">
+          <p>© 2026 Interamplify Directory. <span className="text-zinc-300">Expertise that Scales.</span></p>
           <div className="flex items-center gap-6">
             <Link href="/" className="hover:text-blue-400 transition-colors">Inicio</Link>
             <Link href="/tecnologias" className="hover:text-blue-400 transition-colors">Tecnologías</Link>

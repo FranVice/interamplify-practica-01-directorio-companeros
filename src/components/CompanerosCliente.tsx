@@ -46,7 +46,7 @@ export default function CompanerosCliente({ companeros }: Propiedades) {
 
   return (
     <section className="space-y-12">
-      <div className="relative max-w-xl mx-auto">
+      <div className="relative max-w-2xl mx-auto">
         <div className="flex flex-col sm:flex-row gap-4 items-center">
           {/* RF-02 + RF-03: input de búsqueda por nombre, filtra el listado en tiempo real. */}
           <label className="block relative group flex-grow w-full">

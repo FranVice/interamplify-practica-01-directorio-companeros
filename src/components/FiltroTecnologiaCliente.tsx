@@ -41,7 +41,7 @@ export default function FiltroTecnologiaCliente({
 
   return (
     <div className="space-y-12 w-full">
-      <div className="relative max-w-xl mx-auto">
+      <div className="relative max-w-2xl mx-auto">
         <label className="block relative group flex-grow w-full">
           <span className="sr-only">Filtrar por nombre</span>
           <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-zinc-400 group-focus-within:text-blue-400 transition-colors">

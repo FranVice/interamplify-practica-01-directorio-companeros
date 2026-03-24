@@ -27,8 +27,12 @@ export default function MemberCard({
           {companero.nombre}
         </h3>
 
-        <p className="text-sm font-semibold text-blue-400/80 mb-6 uppercase tracking-wider">
+        <p className="text-sm font-semibold text-blue-400/80 mb-3 uppercase tracking-wider">
           {companero.rol}
+        </p>
+
+        <p className="text-zinc-400 text-sm leading-relaxed mb-6 line-clamp-2">
+          {companero.bio}
         </p>
 
         <div className="flex flex-wrap gap-2 mb-8">
